@@ -1,6 +1,5 @@
-let compWin = 0;
 let userWin = 0;
-
+let compWin = 0;
 
 function getComputerChoice() {
 	let compChoice = Math.floor(Math.random() * 3 + 1);
@@ -14,51 +13,54 @@ function getComputerChoice() {
 	return compChoice;
 }
 
-
 function getUserChoice() {
 	let userChoice = prompt("Rock, papper or scissors");
-    userChoice = userChoice.toLowerCase();
+	userChoice = userChoice.toLowerCase();
 	if (userChoice == "rock") {
-	userChoice = "rock";
+		userChoice = "rock";
 	} else if (userChoice == "papper") {
-	userChoice = "papper";
+		userChoice = "papper";
 	} else if (userChoice == "scissors") {
-	userChoice = "scissors";
+		userChoice = "scissors";
 	} else {
 		alertInvalidSelection();
-        return userChoice;
 	}
 	return userChoice;
 }
 
 function alertInvalidSelection() {
 	alert("Wrong selection, try rock, papper or scissors only");
-	getUserChoice(); 
+	getUserChoice();
 }
 
-function playRound (userChoice, compChoice, compWin, userWin) {
-	userChoice = getUserChoice();
+function playRound(userChoice, compChoice) {
 	compChoice = getComputerChoice();
+	userChoice = getUserChoice();
+	let result;
 	if (userChoice == "scissors" && compChoice == "rock") {
-		return compWin = compWin + 1;
+		return result = 1;
 	} else if (userChoice == "rock" && compChoice == "papper") {
-		return compWin = compWin + 1;
+		return result = 1;
 	} else if (userChoice == "papper" && compChoice == "rock") {
-		return userWin = userWin + 1;
+		return result = 2;
 	} else if (userChoice == "scissors" && compChoice == "papper") {
-		return userWin = userWin + 1;
+		return result = 2;
 	} else if (userChoice == "rock" && compChoice == "scissors") {
-		return userWin = userWin + 1;
+		return result = 2;
 	} else if (userChoice == "papper" && compChoice == "scissors") {
-		return compWin = compWin + 1;
+		return result = 1;
 	} else {
 		return "Draw";
 	}
 }
-
-function gameToFive (compWin, userWin) {
+function gameToFive() {
 	for (let i = 0; i < 5; i++) {
-		playRound();
+		a = playRound();
+		if (a == 1) {
+			compWin++
+		} else if (a == 2) {
+			userWin++;
+		}
 		console.log(compWin, userWin);
 	}
 }

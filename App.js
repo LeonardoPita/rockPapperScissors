@@ -1,3 +1,4 @@
+"use strict"
 let userWin = 0;
 let compWin = 0;
 
@@ -34,31 +35,29 @@ function alertInvalidSelection() {
 }
 
 function playRound(userChoice, compChoice) {
-	compChoice = getComputerChoice();
-	userChoice = getUserChoice();
-	let result;
 	if (userChoice == "scissors" && compChoice == "rock") {
-		return result = 1;
+		return 1;
 	} else if (userChoice == "rock" && compChoice == "papper") {
-		return result = 1;
+		return 1;
 	} else if (userChoice == "papper" && compChoice == "rock") {
-		return result = 2;
+		return 2;
 	} else if (userChoice == "scissors" && compChoice == "papper") {
-		return result = 2;
+		return 2;
 	} else if (userChoice == "rock" && compChoice == "scissors") {
-		return result = 2;
+		return 2;
 	} else if (userChoice == "papper" && compChoice == "scissors") {
-		return result = 1;
+		return 1;
 	} else {
 		return "Draw";
 	}
 }
+
 function gameToFive() {
 	for (let i = 0; i < 5; i++) {
-		a = playRound();
-		if (a == 1) {
+		let roundResult = playRound(getUserChoice(), getComputerChoice());
+		if (roundResult == 1) {
 			compWin++
-		} else if (a == 2) {
+		} else if (roundResult == 2) {
 			userWin++;
 		}
 		console.log(compWin, userWin);
